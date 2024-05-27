@@ -1,0 +1,13 @@
+query SearchCharacter($search: String!){
+	Character(search: $search) {
+		id
+		siteUrl
+		name {
+			full
+		}
+		image {
+			large
+		}
+		description(asHtml: true)
+	}
+}

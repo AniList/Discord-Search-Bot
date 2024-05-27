@@ -1,0 +1,15 @@
+query SearchMedia($type: MediaType!, $search: String!){
+	Media(type: $type, search: $search, isAdult: false) {
+		id
+		title {
+			romaji
+		}
+		coverImage {
+			extraLarge
+		}
+		siteUrl
+		description
+		meanScore
+		status(version: 2)
+	}
+}
