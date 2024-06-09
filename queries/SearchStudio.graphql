@@ -1,0 +1,22 @@
+query SearchStudio($search: String!) {
+	Studio(search: $search) {
+		id
+		name
+		siteUrl
+		popular: media(isMain: true, sort: POPULARITY_DESC, perPage: 5) {
+			...studioMedia
+		}
+		latest: media(isMain: true, sort: START_DATE_DESC, perPage: 5) {
+			...studioMedia
+		}
+	}
+}
+
+fragment studioMedia on MediaConnection {
+	nodes {
+		siteUrl
+		title {
+			romaji
+		}
+	}
+}

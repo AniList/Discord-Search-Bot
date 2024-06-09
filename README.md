@@ -1,36 +1,51 @@
 <h3 align="center">AniList Discord Bot</h3>
 <p align="center">A simple Discord bot for searching AniList.co</p>
 
----
-
 ## Usage
 
-![AniList Discord Bot !help command](https://user-images.githubusercontent.com/4658208/51229242-9ffca900-1929-11e9-8e5f-b7603bdff35a.png)
+![AniList Discord Bot /help command](./.github/example.png)
 
-## Installation
+### Custom Build
+
+1. Follow the requirements in the [building section](#building) and run `cargo build --release`
+2. Go to the [Discord Developer Portal](https://discordapp.com/developers/applications/) and create an application
+3. Go to the "Bot" page and and click "Add a bot"
+4. Set the `DISCORD_TOKEN` environment variable (`.env` or command line) to the token generated for your bot
+5. Run the built binary
+
+Example:
+
+```bash
+./target/release/discord-search-bot DISCORD_TOKEN="foobar" 
+```
+
+### Docker Container 
+
+A Docker container is provided through the [Github Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
+
+1. Pull the image with `docker pull ghcr.io/anilist/discord-search-bot`
+2. Go to the [Discord Developer Portal](https://discordapp.com/developers/applications/) and create an application
+3. Go to the "Bot" page and and click "Add a bot"
+4. Set the `DISCORD_TOKEN` environment variable (`.env` or command line) to the token generated for your bot
+5. Run the image
+
+Example:
+
+```bash
+export DISCORD_TOKEN=foobar
+docker run -e DISCORD_TOKEN ghcr.io/anilist/discord-search-bot
+```
+
+## Contributing
 
 ### Requirements
 
--   Node v12.0.0 or higher
--   A Discord developer account
+- [Rust](https://www.rust-lang.org/) toolchain
+- A Discord developer account for a token to test with.
 
-### Getting Started
+### Building
 
-1. Clone this repo and run `npm install`
-1. Create a copy of `.env.example` named `.env`
-1. Go to the [Discord Developer Portal](https://discordapp.com/developers/applications/) and create an application
-1. Go to the "Bot" page and click "Add a bot"
-1. Copy the token created for your bot and paste it into the `TOKEN` value in your `.env` file
-1. Run `npm start`
-
-## Config
-
-### Prefix
-
-Type: `string`<br>
-Default: `!`
-
-This determines what should prefix the commands that are recognized by the bot.
+Simply run `cargo build` or `cargo build --release`
 
 ## License
 
